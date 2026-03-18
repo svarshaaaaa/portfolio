@@ -49,8 +49,8 @@ export default function About() {
           fontSize: "1rem",
           maxWidth: 460,
         }}>
-          When I&apos;m not working, you&apos;ll find me making travel content on YouTube,
-          exploring new cities, or hunting down the best filter coffee.
+          When I&apos;m not working, you&apos;ll find me making travel content on YouTube and 
+          exploring new cities
         </p>
       </div>
 
