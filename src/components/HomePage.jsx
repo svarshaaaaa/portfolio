@@ -9,22 +9,12 @@ export default function Home({ setActivePage }) {
         padding: "8rem 4rem 5rem",
         display: "flex",
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "flex-start",
         gap: "4rem",
       }}
     >
       {/* Text */}
       <div style={{ flex: 1 }}>
-        <p style={{
-          fontSize: "0.75rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          fontWeight: 600,
-          marginBottom: "1rem",
-        }}>
-          Portfolio
-        </p>
         <h1 style={{
           fontFamily: "'DM Serif Display', serif",
           fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
