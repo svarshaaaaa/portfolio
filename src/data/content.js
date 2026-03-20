@@ -23,24 +23,52 @@ export const techProjects = [
 
 export const productProjects = [
   {
-    title: "Product Case 1",
-    desc: "Problem statement, your approach, and the outcome or impact.",
-    link: "#",
+    id: 1,
+    title: "Project Name",
+    tag: "Case Study",
+    summary: "One line description shown on the card.",
+    details: {
+      problem: "What problem were you solving?",
+      approach: "What did you do? What was your process?",
+      outcome: "What was the result or impact?",
+      tools: ["Figma", "Notion", "SQL"],
+    },
   },
   {
-    title: "Product Case 2",
-    desc: "Problem statement, your approach, and the outcome or impact.",
-    link: "#",
+    id: 2,
+    title: "Another Project",
+    tag: "Product Design",
+    summary: "One line description shown on the card.",
+    details: {
+      problem: "What problem were you solving?",
+      approach: "What did you do? What was your process?",
+      outcome: "What was the result or impact?",
+      tools: ["Miro", "Jira"],
+    },
   },
   {
-    title: "Product Case 3",
-    desc: "Problem statement, your approach, and the outcome or impact.",
-    link: "#",
+    id: 3,
+    title: "Third Project",
+    tag: "Research",
+    summary: "One line description shown on the card.",
+    details: {
+      problem: "What problem were you solving?",
+      approach: "What did you do? What was your process?",
+      outcome: "What was the result or impact?",
+      tools: ["Dovetail", "Notion"],
+    },
   },
   {
-    title: "Product Case 4",
-    desc: "Problem statement, your approach, and the outcome or impact.",
-    link: "#",
+    id: 4,
+    title: "Fourth Project",
+    tag: "Strategy",
+    summary: "One line description shown on the card.",
+    details: {
+      problem: "What problem were you solving?",
+      approach: "What did you do? What was your process?",
+      outcome: "What was the result or impact?",
+      tools: ["Figma", "Amplitude"],
+    },
   },
 ];
 

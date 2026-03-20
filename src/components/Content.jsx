@@ -14,7 +14,7 @@ export default function Content() {
       }}
     >
       {/* Video side */}
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, justifyContent: "flex-start" }}>
         <h2 style={{
           fontFamily: "'DM Serif Display', serif",
           fontSize: "2.8rem",
@@ -25,7 +25,7 @@ export default function Content() {
 
         {/* Video embed box */}
         <div style={{
-          width: "100%",
+          width: "80%",
           aspectRatio: "16/9",
           background: "var(--card-bg)",
           border: "1px solid var(--soft)",
@@ -72,10 +72,10 @@ export default function Content() {
         <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.2rem", textAlign: "center" }}>
           Varsha
         </div>
-        <div style={{ fontSize: "0.8rem", color: "var(--warm-mid)" }}>@yourchannel</div>
+        <div style={{ fontSize: "0.8rem", color: "var(--warm-mid)" }}>@svarshaaa</div>
 
         <a
-          href="https://youtube.com/@yourchannel"
+          href="https://www.youtube.com/@svarshaaa"
           target="_blank"
           rel="noopener noreferrer"
           style={{
