@@ -13,16 +13,6 @@ export default function Contact() {
       }}
     >
       <div style={{ maxWidth: 500, marginBottom: "3rem" }}>
-        <p style={{
-          fontSize: "0.75rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          fontWeight: 600,
-          marginBottom: "1rem",
-        }}>
-          Contact
-        </p>
         <h2 style={{
           fontFamily: "'DM Serif Display', serif",
           fontSize: "2.8rem",

@@ -15,16 +15,6 @@ export default function About() {
     >
       {/* Left */}
       <div style={{ flex: 1 }}>
-        <p style={{
-          fontSize: "0.75rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          fontWeight: 600,
-          marginBottom: "1rem",
-        }}>
-          About me
-        </p>
         <h2 style={{
           fontFamily: "'DM Serif Display', serif",
           fontSize: "2.8rem",

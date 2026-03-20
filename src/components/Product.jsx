@@ -3,11 +3,14 @@ import { useState } from "react";
 import ProjectsCarousel from "./ProjectsCarousel";
 import CoursesList from "./CoursesList";
 import { productProjects, productCourses } from "@/data/content";
-
-const subPages = ["overview", "projects", "courses"];
+import Page from "./Page";
 
 export default function Product() {
-  const [sub, setSub] = useState("overview");
+  const [sub, setSub] = useState(null);
+
+  const handleClick = (label) => {
+    setSub(prev => prev === label ? null : label);
+  };
 
   return (
     <section
@@ -21,79 +24,57 @@ export default function Product() {
       }}
     >
       <div style={{ marginBottom: "2.5rem" }}>
-        <p style={{
-          fontSize: "0.75rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          fontWeight: 600,
-          marginBottom: "0.5rem",
-        }}>
-          Product work
-        </p>
         <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem" }}>Product</h2>
       </div>
 
-      <div style={{ display: "flex", gap: "1.5rem", marginBottom: "2.5rem" }}>
-        {subPages.map((s) => (
-          <button
-            key={s}
-            onClick={() => setSub(s)}
+      {/* Always visible cards */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", maxWidth: 700 }}>
+        {["projects", "courses"].map((label) => (
+          <div
+            key={label}
+            onClick={() => handleClick(label)}
             style={{
-              background: "none",
-              border: "none",
-              fontFamily: "'DM Sans', sans-serif",
-              fontSize: "0.8rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              fontWeight: 600,
-              color: sub === s ? "var(--ink)" : "var(--warm-mid)",
+              background: sub === label ? "var(--ink)" : "var(--card-bg)",
+              color: sub === label ? "var(--cream)" : "var(--ink)",
+              border: "1px solid var(--soft)",
+              padding: "3rem 2rem",
               cursor: "pointer",
-              paddingBottom: "0.4rem",
-              borderBottom: sub === s ? "2px solid var(--accent)" : "2px solid transparent",
-              transition: "all 0.2s",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.8rem",
+              transition: "all 0.25s",
+            }}
+            onMouseOver={(e) => {
+              if (sub !== label) {
+                e.currentTarget.style.background = "var(--ink)";
+                e.currentTarget.style.color = "var(--cream)";
+              }
+            }}
+            onMouseOut={(e) => {
+              if (sub !== label) {
+                e.currentTarget.style.background = "var(--card-bg)";
+                e.currentTarget.style.color = "var(--ink)";
+              }
             }}
           >
-            {s}
-          </button>
+            <div style={{ fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--warm-mid)" }}>
+              View all
+            </div>
+            <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.8rem", textTransform: "capitalize" }}>
+              {label}
+            </h3>
+            <div style={{ marginTop: "auto", fontSize: "1.5rem" }}>→</div>
+          </div>
         ))}
       </div>
 
-      {sub === "overview" && (
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", maxWidth: 700 }}>
-          {["Projects", "Courses"].map((label) => (
-            <div
-              key={label}
-              onClick={() => setSub(label.toLowerCase())}
-              style={{
-                background: "var(--card-bg)",
-                border: "1px solid var(--soft)",
-                padding: "3rem 2rem",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.8rem",
-                transition: "all 0.25s",
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.background = "var(--ink)";
-                e.currentTarget.style.color = "var(--cream)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.background = "var(--card-bg)";
-                e.currentTarget.style.color = "var(--ink)";
-              }}
-            >
-              <div style={{ fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--warm-mid)" }}>View all</div>
-              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.8rem" }}>{label}</h3>
-              <div style={{ marginTop: "auto", fontSize: "1.5rem" }}>→</div>
-            </div>
-          ))}
+      {/* Content appears below after clicking */}
+      {sub && (
+        <div style={{ marginTop: "3rem", maxWidth: 700 }} className="fade-up">
+          {sub === "projects" && <ProjectsCarousel projects={productProjects} />}
+          {sub === "courses" && <CoursesList courses={productCourses} />}
         </div>
       )}
-
-      {sub === "projects" && <ProjectsCarousel projects={productProjects} />}
-      {sub === "courses" && <CoursesList courses={productCourses} />}
     </section>
   );
 }

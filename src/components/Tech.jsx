@@ -22,16 +22,6 @@ export default function Tech() {
     >
       {/* Header */}
       <div style={{ marginBottom: "2.5rem" }}>
-        <p style={{
-          fontSize: "0.75rem",
-          letterSpacing: "0.15em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          fontWeight: 600,
-          marginBottom: "0.5rem",
-        }}>
-          Technical work
-        </p>
         <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem" }}>Tech</h2>
       </div>
 

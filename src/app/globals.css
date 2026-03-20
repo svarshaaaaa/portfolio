@@ -13,11 +13,21 @@
   --card-bg: #EFEBE4;
 }
 
+[data-theme="dark"] {
+  --cream: #1A1714;
+  --ink: #F7F4EF;
+  --warm-mid: #A89880;
+  --accent: #E05A3A;
+  --soft: #2E2A26;
+  --card-bg: #242018;
+}
+
 body {
   background: var(--cream);
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
 }
 
 @keyframes fadeUp {
