@@ -9,7 +9,7 @@ export default function About() {
         padding: "8rem 4rem 5rem",
         display: "flex",
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "flex-start",
         gap: "5rem",
       }}
     >

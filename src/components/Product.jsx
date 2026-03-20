@@ -20,12 +20,10 @@ export default function Product() {
         padding: "8rem 4rem 5rem",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "flex-start",
       }}
     >
-      <div style={{ marginBottom: "2.5rem" }}>
-        <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem" }}>Product</h2>
-      </div>
+      
 
       {/* Always visible cards */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", maxWidth: 700 }}>

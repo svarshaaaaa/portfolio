@@ -17,13 +17,9 @@ export default function Tech() {
         padding: "8rem 4rem 5rem",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
+        justifyContent: "flex-start",
       }}
     >
-      {/* Header */}
-      <div style={{ marginBottom: "2.5rem" }}>
-        <h2 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.8rem" }}>Tech</h2>
-      </div>
 
       {/* Sub-nav */}
       <div style={{ display: "flex", gap: "1.5rem", marginBottom: "2.5rem" }}>
