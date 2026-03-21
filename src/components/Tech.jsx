@@ -4,7 +4,7 @@ import CoursesList from "./CoursesList";
 import { techProjects, techCourses } from "@/data/content";
 
 export default function Tech() {
-  const [view, setView] = useState("main"); // "main" | "projects-grid" | "projects-detail" | "courses"
+  const [view, setView] = useState("main");
   const [selected, setSelected] = useState(null);
 
   const handleProjectClick = (project) => {
@@ -12,7 +12,6 @@ export default function Tech() {
     setView("projects-detail");
   };
 
-  // Shared header
   const Header = ({ backLabel, backView }) => (
     <div style={{ paddingTop: "2rem", marginBottom: "2.5rem" }}>
       {backLabel && (
@@ -33,12 +32,19 @@ export default function Tech() {
     </div>
   );
 
-  // MAIN VIEW — 2 big cards
+  // MAIN VIEW — 2 big centered cards
   if (view === "main") {
     return (
-      <section className="fade-up" style={{ minHeight: "100vh", padding: "6rem 4rem 5rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+      <section className="fade-up" style={{
+        minHeight: "100vh", padding: "6rem 4rem 5rem",
+        display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
+      }}>
         <Header />
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", maxWidth: 700 }}>
+        <div style={{
+          display: "grid", gridTemplateColumns: "1fr 1fr",
+          gap: "2rem", width: "100%", maxWidth: 900,
+        }}>
           {[
             { label: "Projects", target: "projects-grid" },
             { label: "Courses", target: "courses" },
@@ -48,7 +54,7 @@ export default function Tech() {
               onClick={() => setView(target)}
               style={{
                 background: "var(--card-bg)", border: "1px solid var(--soft)",
-                padding: "3rem 2rem", cursor: "pointer",
+                padding: "5rem 3rem", cursor: "pointer",
                 display: "flex", flexDirection: "column", gap: "0.8rem",
                 transition: "all 0.25s",
               }}
@@ -56,7 +62,7 @@ export default function Tech() {
               onMouseOut={(e) => { e.currentTarget.style.background = "var(--card-bg)"; e.currentTarget.style.color = "var(--ink)"; }}
             >
               <div style={{ fontSize: "0.8rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--warm-mid)" }}>View all</div>
-              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.8rem" }}>{label}</h3>
+              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "2.2rem" }}>{label}</h3>
               <div style={{ marginTop: "auto", fontSize: "1.5rem" }}>→</div>
             </div>
           ))}
@@ -102,7 +108,6 @@ export default function Tech() {
       <section className="fade-up" style={{ minHeight: "100vh", padding: "6rem 4rem 5rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
         <Header backLabel="Projects" backView="projects-grid" />
         <div style={{ display: "flex", gap: "2rem", width: "100%", alignItems: "flex-start" }}>
-          {/* Left: list */}
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: "0 0 320px" }}>
             {techProjects.map((project) => (
               <div
@@ -125,7 +130,6 @@ export default function Tech() {
             ))}
           </div>
 
-          {/* Right: detail panel */}
           {selected && (
             <div className="fade-up" style={{ flex: 1, background: "var(--card-bg)", border: "1px solid var(--soft)", padding: "2.5rem" }}>
               <div style={{ fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 600, marginBottom: "0.5rem" }}>{selected.tag}</div>
