@@ -1,17 +1,28 @@
 "use client";
 import { useState } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 import { productProjects } from "@/data/content";
 
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
 export default function Product() {
-  const [view, setView] = useState("grid"); // "grid" or "detail"
+  const [view, setView] = useState("grid");
   const [selected, setSelected] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [numPages, setNumPages] = useState(null);
 
   const handleCardClick = (project) => {
     setSelected(project);
     setView("detail");
+    setPageNumber(1);
+    setNumPages(null);
   };
 
-  // DETAIL VIEW (list on left, detail panel on right)
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
+  };
+
+  // DETAIL VIEW
   if (view === "detail") {
     return (
       <section
@@ -46,7 +57,7 @@ export default function Product() {
             {productProjects.map((project) => (
               <div
                 key={project.id}
-                onClick={() => setSelected(project)}
+                onClick={() => { setSelected(project); setPageNumber(1); setNumPages(null); }}
                 style={{
                   background: selected?.id === project.id ? "var(--ink)" : "var(--card-bg)",
                   color: selected?.id === project.id ? "var(--cream)" : "var(--ink)",
@@ -117,10 +128,39 @@ export default function Product() {
                   <p style={{ fontSize: "0.95rem", color: "var(--ink)", lineHeight: 1.7 }}>
                     {value}
                   </p>
+                  {label === "Outcome" && selected.details.siteUrl && (
+                    <a
+                      href={selected.details.siteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                        marginTop: "0.85rem",
+                        padding: "0.55rem 1.2rem",
+                        border: "1px solid var(--accent)",
+                        color: "var(--accent)",
+                        fontSize: "0.78rem", letterSpacing: "0.1em",
+                        textTransform: "uppercase", fontWeight: 600,
+                        textDecoration: "none",
+                        transition: "all 0.2s",
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.background = "var(--accent)";
+                        e.currentTarget.style.color = "var(--cream)";
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.background = "transparent";
+                        e.currentTarget.style.color = "var(--accent)";
+                      }}
+                    >
+                      View site ↗
+                    </a>
+                  )}
                 </div>
               ))}
 
-              <div>
+              {/* Tools */}
+              <div style={{ marginBottom: "2.5rem" }}>
                 <p style={{
                   fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase",
                   fontWeight: 600, color: "var(--warm-mid)", marginBottom: "0.6rem",
@@ -138,6 +178,96 @@ export default function Product() {
                   ))}
                 </div>
               </div>
+
+              {/* PDF Viewer */}
+              {selected.details.pdfUrl && (
+                <div>
+                  <div style={{
+                    display: "flex", alignItems: "center",
+                    justifyContent: "space-between", marginBottom: "0.6rem",
+                  }}>
+                    <p style={{
+                      fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase",
+                      fontWeight: 600, color: "var(--warm-mid)", margin: 0,
+                    }}>
+                      Case Document
+                    </p>
+                    <a
+                      href={selected.details.pdfUrl}
+                      download
+                      style={{
+                        fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase",
+                        fontWeight: 600, color: "var(--accent)", textDecoration: "none",
+                      }}
+                    >
+                      Download ↓
+                    </a>
+                  </div>
+
+                  {/* PDF render area */}
+                  <div style={{
+                    border: "1px solid var(--soft)",
+                    background: "var(--cream)",
+                    overflow: "hidden",
+                  }}>
+                    <Document
+                      file={selected.details.pdfUrl}
+                      onLoadSuccess={onDocumentLoadSuccess}
+                      loading={
+                        <div style={{
+                          height: 300, display: "flex", alignItems: "center",
+                          justifyContent: "center", fontSize: "0.85rem", color: "var(--warm-mid)",
+                        }}>
+                          Loading document…
+                        </div>
+                      }
+                    >
+                      <Page
+                        pageNumber={pageNumber}
+                        width={600}
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                      />
+                    </Document>
+                  </div>
+
+                  {/* Page controls */}
+                  {numPages && numPages > 1 && (
+                    <div style={{
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      gap: "1rem", marginTop: "0.75rem",
+                    }}>
+                      <button
+                        onClick={() => setPageNumber((p) => Math.max(p - 1, 1))}
+                        disabled={pageNumber <= 1}
+                        style={{
+                          background: "none", border: "1px solid var(--soft)",
+                          padding: "0.3rem 0.8rem", cursor: "pointer",
+                          fontSize: "0.8rem", color: "var(--ink)",
+                          opacity: pageNumber <= 1 ? 0.3 : 1,
+                        }}
+                      >
+                        ←
+                      </button>
+                      <span style={{ fontSize: "0.8rem", color: "var(--warm-mid)" }}>
+                        {pageNumber} / {numPages}
+                      </span>
+                      <button
+                        onClick={() => setPageNumber((p) => Math.min(p + 1, numPages))}
+                        disabled={pageNumber >= numPages}
+                        style={{
+                          background: "none", border: "1px solid var(--soft)",
+                          padding: "0.3rem 0.8rem", cursor: "pointer",
+                          fontSize: "0.8rem", color: "var(--ink)",
+                          opacity: pageNumber >= numPages ? 0.3 : 1,
+                        }}
+                      >
+                        →
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>
