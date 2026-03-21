@@ -87,7 +87,7 @@ export default function Product() {
           {selected && (
             <div className="fade-up" style={{
               flex: 1, background: "var(--card-bg)",
-              border: "1px solid var(--soft)", padding: "2.5rem",
+              border: "1px solid var(--soft)", padding: "2.5rem", 
             }}>
               <div style={{
                 fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase",
@@ -247,15 +247,16 @@ export default function Product() {
         padding: "8rem 4rem 5rem",
         display: "flex",
         flexDirection: "column",
-        alignItems: "flex-start",
+        alignItems: "center",
       }}
     >
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(2, 1fr)",
+        gridTemplateColumns: "repeat(3, 1fr)",
         gap: "1.5rem",
         width: "100%",
-        maxWidth: 800,
+        maxWidth: 1100,
+        margin: "0 auto",
       }}>
         {productProjects.map((project) => (
           <div
