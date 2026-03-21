@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 export default function Navbar({ activePage, setActivePage }) {
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(true);
   const links = ["about", "tech", "product", "content", "contact"];
 
   useEffect(() => {
