@@ -34,7 +34,7 @@ export default function Home({ setActivePage }) {
           marginBottom: "2rem",
         }}>
           I love to create, build and tell stories.
-          <br />Come see what I’m building and learning on the path ahead!
+          <br />Come see what I’m building and learning!
         </p>
         <button
           onClick={() => setActivePage("about")}
