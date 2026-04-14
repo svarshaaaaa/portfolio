@@ -38,14 +38,14 @@ export const productProjects = [
   },
   {
     id: 2,
-    title: "Another Project",
+    title: "Crumb",
     tag: "Product Design",
-    summary: "One line description shown on the card.",
     details: {
-      problem: "What problem were you solving?",
-      approach: "What did you do? What was your process?",
-      outcome: "What was the result or impact?",
-      tools: ["Miro", "Jira"],
+      problem: "Adulting comes with a lot of difficult decisions — the biggest one being, what to cook for dinner?I come across recipes on Instagram, YouTube, and countless other sites every day. And I want to save all my mum's recipes too. But there's nowhere for them all to live together.We have Strava for running and Hevy for the gym — but nothing to track our eating.So I built NourishNote. One place to save recipes from anywhere, track what you eat, and finally answer the eternal question.",
+      approach: "My approach was to treat 'what’s for dinner' as a data fragmentation problem. I listed out every friction point—from lost Instagram DMs to handwritten notes from my mum—and prioritized features that solved those specific gaps first.",
+      outcome: "The beauty of building today is that the barrier between an idea and a prototype has basically vanished. I spent my time focusing on the product vision—mapping out the user journey and the features that actually matter—and then used Claude Code as my 'co-pilot' to bring the technical side to life.",
+      pdfUrl1:"/docs/Crumb Demo.mp4",
+      tools: ["React Native", "Expo", "AsyncStorage", "Anthropic Claude API"],
     },
   },
   
