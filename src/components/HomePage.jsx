@@ -24,7 +24,7 @@ export default function Home({ setActivePage }) {
           Hi, I&apos;m{" "}
           <em style={{ fontStyle: "italic", color: "var(--accent)" }}>Varsha,</em>
           <br />welcome to
-          <br />my abode.
+          <br />my abode!
         </h1>
         <p style={{
           fontSize: "1.05rem",
@@ -33,8 +33,8 @@ export default function Home({ setActivePage }) {
           maxWidth: 420,
           marginBottom: "2rem",
         }}>
-          Product thinker. Tech builder. Content creator.
-          <br />I make things and tell stories about them.
+          I love to create, build and tell stories.
+          <br />Come see what I’m building and learning on the path ahead!
         </p>
         <button
           onClick={() => setActivePage("about")}
