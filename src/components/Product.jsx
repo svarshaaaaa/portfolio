@@ -40,9 +40,9 @@ export default function Product() {
           </button>
         </div>
 
-        <div style={{ display: "flex", gap: "2rem", width: "100%", alignItems: "flex-start" }}>
+        <div style={{ display: "flex", gap: "2rem", width: "100%", flex: 1, minHeight: 0, alignItems: "stretch" }}>
           {/* Left: project list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: "0 0 320px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: "0 0 260px", overflowY: "auto" }}>
             {productProjects.map((project) => (
               <div
                 key={project.id}
@@ -87,7 +87,8 @@ export default function Product() {
           {selected && (
             <div className="fade-up" style={{
               flex: 1, background: "var(--card-bg)",
-              border: "1px solid var(--soft)", padding: "2.5rem", 
+              border: "1px solid var(--soft)", padding: "2.5rem",
+              overflowY: "auto",
             }}>
               <div style={{
                 fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase",
@@ -180,33 +181,48 @@ export default function Product() {
                 <p style={{ fontSize: "0.95rem", color: "var(--ink)", lineHeight: 1.7 }}>
                   {selected.details.outcome}
                 </p>
-                {selected.details.siteUrl && (
-                  <a
-                    href={selected.details.siteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                      marginTop: "0.85rem",
-                      padding: "0.55rem 1.2rem",
-                      border: "1px solid var(--accent)",
-                      color: "var(--accent)",
-                      fontSize: "0.78rem", letterSpacing: "0.1em",
-                      textTransform: "uppercase", fontWeight: 600,
-                      textDecoration: "none", transition: "all 0.2s",
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.background = "var(--accent)";
-                      e.currentTarget.style.color = "var(--cream)";
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.background = "transparent";
-                      e.currentTarget.style.color = "var(--accent)";
-                    }}
-                  >
-                    View site ↗
-                  </a>
-                )}
+                <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginTop: "0.85rem" }}>
+                  {selected.details.siteUrl && (
+                    <a
+                      href={selected.details.siteUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                        padding: "0.55rem 1.2rem",
+                        border: "1px solid var(--accent)",
+                        color: "var(--accent)",
+                        fontSize: "0.78rem", letterSpacing: "0.1em",
+                        textTransform: "uppercase", fontWeight: 600,
+                        textDecoration: "none", transition: "all 0.2s",
+                      }}
+                      onMouseOver={(e) => { e.currentTarget.style.background = "var(--accent)"; e.currentTarget.style.color = "var(--cream)"; }}
+                      onMouseOut={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--accent)"; }}
+                    >
+                      View site ↗
+                    </a>
+                  )}
+                  {selected.details.videoUrl && (
+                    <a
+                      href={selected.details.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: "0.5rem",
+                        padding: "0.55rem 1.2rem",
+                        border: "1px solid var(--accent)",
+                        color: "var(--accent)",
+                        fontSize: "0.78rem", letterSpacing: "0.1em",
+                        textTransform: "uppercase", fontWeight: 600,
+                        textDecoration: "none", transition: "all 0.2s",
+                      }}
+                      onMouseOver={(e) => { e.currentTarget.style.background = "var(--accent)"; e.currentTarget.style.color = "var(--cream)"; }}
+                      onMouseOut={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--accent)"; }}
+                    >
+                      Watch demo ↗
+                    </a>
+                  )}
+                </div>
               </div>
 
               {/* Tools */}
