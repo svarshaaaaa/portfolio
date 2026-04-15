@@ -5,8 +5,8 @@ export default function Home({ scrollToSection }) {
     <section
       className="fade-up"
       style={{
-        minHeight: "100vh",
-        padding: "8rem 4rem 5rem",
+        height: "100%",
+        padding: "5rem 4rem 3rem",
         display: "flex",
         flexDirection: "row",
         alignItems: "flex-start",

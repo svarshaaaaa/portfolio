@@ -1,11 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import CoursesList from "./CoursesList";
 import { techProjects, techCourses } from "@/data/content";
 
 export default function Tech() {
   const [view, setView] = useState("main");
   const [selected, setSelected] = useState(null);
+  const trackRef = useRef(null);
 
   const handleProjectClick = (project) => {
     setSelected(project);
@@ -36,11 +37,10 @@ export default function Tech() {
   if (view === "main") {
     return (
       <section className="fade-up" style={{
-        minHeight: "100vh", padding: "6rem 4rem 5rem",
+        height: "100%", padding: "5rem 4rem 3rem",
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
       }}>
-        <Header />
         <div style={{
           display: "grid", gridTemplateColumns: "1fr 1fr",
           gap: "2rem", width: "100%", maxWidth: 900,
@@ -73,30 +73,86 @@ export default function Tech() {
 
   // PROJECTS GRID VIEW
   if (view === "projects-grid") {
+    const scroll = (dir) => {
+      const track = trackRef.current;
+      if (!track) return;
+      const card = track.firstElementChild;
+      const cardWidth = card ? card.offsetWidth + 24 : 360; // card + 1.5rem gap
+      track.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+    };
+
     return (
-      <section className="fade-up" style={{ minHeight: "100vh", padding: "6rem 4rem 5rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+      <section className="fade-up" style={{ height: "100%", padding: "5rem 4rem 3rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
         <Header backLabel="Tech" backView="main" />
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5rem", width: "100%", maxWidth: 800 }}>
-          {techProjects.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => handleProjectClick(project)}
-              style={{
-                background: "var(--card-bg)", border: "1px solid var(--soft)",
-                padding: "2rem", cursor: "pointer", transition: "all 0.2s",
-                display: "flex", flexDirection: "column", gap: "0.6rem",
-              }}
-              onMouseOver={(e) => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.background = "var(--soft)"; }}
-              onMouseOut={(e) => { e.currentTarget.style.borderColor = "var(--soft)"; e.currentTarget.style.background = "var(--card-bg)"; }}
-            >
-              <div style={{ fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 600 }}>{project.tag}</div>
-              <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.4rem", color: "var(--ink)" }}>{project.title}</h3>
-              <p style={{ fontSize: "0.85rem", color: "var(--warm-mid)", lineHeight: 1.6 }}>{project.desc}</p>
-              <div style={{ marginTop: "auto", paddingTop: "1rem", fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 600, color: "var(--accent)" }}>
-                View project →
+
+        {/* Carousel wrapper */}
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem", width: "100%" }}>
+
+          {/* Left arrow */}
+          <button
+            onClick={() => scroll(-1)}
+            style={{
+              flexShrink: 0, width: 40, height: 40,
+              background: "var(--card-bg)", border: "1px solid var(--soft)",
+              cursor: "pointer", fontSize: "1.1rem", color: "var(--ink)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              transition: "all 0.2s",
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--cream)"; }}
+            onMouseOut={(e) => { e.currentTarget.style.background = "var(--card-bg)"; e.currentTarget.style.color = "var(--ink)"; }}
+          >←</button>
+
+          {/* Scroll track — cards fill exactly 3 per view */}
+          <div
+            ref={trackRef}
+            className="h-scroll"
+            style={{
+              flex: 1,
+              display: "flex",
+              gap: "1.5rem",
+              overflowX: "auto",
+              scrollSnapType: "x mandatory",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {techProjects.map((project) => (
+              <div
+                key={project.id}
+                onClick={() => handleProjectClick(project)}
+                style={{
+                  flex: "0 0 calc((100% - 3rem) / 3)",
+                  background: "var(--card-bg)", border: "1px solid var(--soft)",
+                  padding: "2.5rem 2rem", cursor: "pointer", transition: "all 0.2s",
+                  display: "flex", flexDirection: "column", gap: "0.6rem",
+                  scrollSnapAlign: "start", minHeight: 240,
+                }}
+                onMouseOver={(e) => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.background = "var(--soft)"; }}
+                onMouseOut={(e) => { e.currentTarget.style.borderColor = "var(--soft)"; e.currentTarget.style.background = "var(--card-bg)"; }}
+              >
+                <div style={{ fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--accent)", fontWeight: 600 }}>{project.tag}</div>
+                <h3 style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.4rem", color: "var(--ink)" }}>{project.title}</h3>
+                <p style={{ fontSize: "0.85rem", color: "var(--warm-mid)", lineHeight: 1.6 }}>{project.desc}</p>
+                <div style={{ marginTop: "auto", paddingTop: "1rem", fontSize: "0.75rem", letterSpacing: "0.08em", textTransform: "uppercase", fontWeight: 600, color: "var(--accent)" }}>
+                  View project →
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={() => scroll(1)}
+            style={{
+              flexShrink: 0, width: 40, height: 40,
+              background: "var(--card-bg)", border: "1px solid var(--soft)",
+              cursor: "pointer", fontSize: "1.1rem", color: "var(--ink)",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              transition: "all 0.2s",
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.background = "var(--ink)"; e.currentTarget.style.color = "var(--cream)"; }}
+            onMouseOut={(e) => { e.currentTarget.style.background = "var(--card-bg)"; e.currentTarget.style.color = "var(--ink)"; }}
+          >→</button>
+
         </div>
       </section>
     );
@@ -105,7 +161,7 @@ export default function Tech() {
   // PROJECTS DETAIL VIEW
   if (view === "projects-detail") {
     return (
-      <section className="fade-up" style={{ minHeight: "100vh", padding: "6rem 4rem 5rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+      <section className="fade-up" style={{ height: "100%", padding: "5rem 4rem 3rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
         <Header backLabel="Projects" backView="projects-grid" />
         <div style={{ display: "flex", gap: "2rem", width: "100%", alignItems: "flex-start" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: "0 0 320px" }}>
@@ -150,7 +206,7 @@ export default function Tech() {
   // COURSES VIEW
   if (view === "courses") {
     return (
-      <section className="fade-up" style={{ minHeight: "100vh", padding: "6rem 4rem 5rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+      <section className="fade-up" style={{ height: "100%", padding: "5rem 4rem 3rem", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
         <Header backLabel="Tech" backView="main" />
         <CoursesList courses={techCourses} />
       </section>

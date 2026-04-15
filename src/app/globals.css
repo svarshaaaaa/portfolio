@@ -22,24 +22,31 @@
   --card-bg: #242018;
 }
 
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
 body {
   background: var(--cream);
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
   transition: background 0.3s, color 0.3s;
+}
+
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 .snap-section {
   height: 100vh;
   overflow: hidden;
   scroll-snap-align: start;
+  flex-shrink: 0;
 }
+
+/* Hide scrollbar on horizontal carousels but keep scrolling functional */
+.h-scroll::-webkit-scrollbar { display: none; }
+.h-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }

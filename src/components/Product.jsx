@@ -17,8 +17,8 @@ export default function Product() {
       <section
         className="fade-up"
         style={{
-          minHeight: "100vh",
-          padding: "6rem 4rem 5rem",
+          height: "100%",
+          padding: "5rem 4rem 3rem",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
@@ -243,11 +243,12 @@ export default function Product() {
     <section
       className="fade-up"
       style={{
-        minHeight: "100vh",
-        padding: "8rem 4rem 5rem",
+        height: "100%",
+        padding: "5rem 4rem 3rem",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <div style={{

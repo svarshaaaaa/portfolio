@@ -5,16 +5,16 @@ export default function Content() {
     <section
       className="fade-up"
       style={{
-        minHeight: "100vh",
-        padding: "8rem 4rem 5rem",
+        height: "100%",
+        padding: "5rem 4rem 3rem",
         display: "flex",
         flexDirection: "row",
-        alignItems: "flex-start",
+        alignItems: "center",
         gap: "4rem",
       }}
     >
       {/* Video side */}
-      <div style={{ flex: 1, justifyContent: "flex-start" }}>
+      <div style={{ flex: 1 }}>
         <h2 style={{
           fontFamily: "'DM Serif Display', serif",
           fontSize: "2.8rem",
@@ -25,7 +25,7 @@ export default function Content() {
 
         {/* Video embed box */}
         <div style={{
-          width: "80%",
+          width: "65%",
           aspectRatio: "16/9",
           background: "var(--card-bg)",
           border: "1px solid var(--soft)",
@@ -47,12 +47,11 @@ export default function Content() {
 
       {/* YouTube profile side */}
       <div style={{
-        flex: "0 0 220px",
+        flex: "0 0 200px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         gap: "1rem",
-        paddingTop: "8rem",
       }}>
         {/* Avatar */}
         <div style={{

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "@/components/Navbar";
 import HomePage from "@/components/HomePage";
 import About from "@/components/About";
@@ -10,31 +10,40 @@ import Contact from "@/components/Contact";
 
 export default function Page() {
   const [activePage, setActivePage] = useState("home");
+  const containerRef = useRef(null);
+
+  const sectionIds = ["home", "about", "tech", "product", "content", "contact"];
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const container = containerRef.current;
+    if (!container) return;
+    const idx = sectionIds.indexOf(id);
+    if (idx >= 0) container.scrollTo({ top: idx * container.clientHeight, behavior: "smooth" });
   };
 
   useEffect(() => {
-    const sectionIds = ["home", "about", "tech", "product", "content", "contact"];
+    const container = containerRef.current;
+    if (!container) return;
+
     const observers = sectionIds.map((id) => {
       const el = document.getElementById(id);
       const obs = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) setActivePage(id);
         },
-        { threshold: 0.5 }
+        { root: container, threshold: 0.5 }
       );
       if (el) obs.observe(el);
       return obs;
     });
+
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
   return (
     <>
       <Navbar activePage={activePage} scrollToSection={scrollToSection} />
-      <main>
+      <div className="scroll-container" ref={containerRef}>
         <div id="home" className="snap-section">
           <HomePage scrollToSection={scrollToSection} />
         </div>
@@ -53,7 +62,7 @@ export default function Page() {
         <div id="contact" className="snap-section">
           <Contact />
         </div>
-      </main>
+      </div>
     </>
   );
 }
