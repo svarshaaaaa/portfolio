@@ -41,7 +41,7 @@ export const productProjects = [
     title: "Crumb",
     tag: "Product Design",
     details: {
-      problem: "Adulting comes with a lot of difficult decisions — the biggest one being, what to cook for dinner?I come across recipes on Instagram, YouTube, and countless other sites every day. And I want to save all my mum's recipes too. But there's nowhere for them all to live together.We have Strava for running and Hevy for the gym — but nothing to track our eating. So I built Crumb. One place to save recipes from anywhere, track what you eat, and finally answer the eternal question.",
+      problem: "Adulting comes with a lot of difficult decisions — the biggest one being, what to cook for dinner?I come across recipes on Instagram, YouTube, and countless other sites every day. And I want to save all my mum's recipes too. But there's nowhere for them all to live together.We have Strava for running and Hevy for the gym — but nothing to track our eating. So I built Crumb. One place to save recipes from anywhere, track what you eat, and finally answer the eternal question.", 
       approach: "My approach was to treat 'what’s for dinner' as a data fragmentation problem. I listed out every friction point—from lost Instagram DMs to voice notes from my mum—and prioritized features that solved those specific gaps first.",
       outcome: "The beauty of building today is that the barrier between an idea and a prototype has basically vanished. I spent my time focusing on the product vision—mapping out the user journey and the features that actually matter—and then used Claude Code as my 'co-pilot' to bring the technical side to life.",
       videoUrl: "/docs/Crumb Demo.mp4",
@@ -49,6 +49,34 @@ export const productProjects = [
     },
   },
   
+];
+
+export const timeline = [
+  {
+    year: "2025",
+    title: "Title / Role",
+    description: "Short description of what you did, built, or achieved here.",
+  },
+  {
+    year: "2024",
+    title: "Title / Role",
+    description: "Short description of what you did, built, or achieved here.",
+  },
+  {
+    year: "2023",
+    title: "Title / Role",
+    description: "Short description of what you did, built, or achieved here.",
+  },
+  {
+    year: "2022",
+    title: "Title / Role",
+    description: "Short description of what you did, built, or achieved here.",
+  },
+  {
+    year: "2021",
+    title: "Title / Role",
+    description: "Short description of what you did, built, or achieved here.",
+  },
 ];
 
 export const techCourses = [

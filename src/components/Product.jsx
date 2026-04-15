@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
 import { productProjects } from "@/data/content";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Product() {
   const [view, setView] = useState("grid");
   const [selected, setSelected] = useState(null);
+  const isMobile = useIsMobile();
+  const pad = isMobile ? "5rem 1.5rem 3rem" : "5rem 4rem 3rem";
 
   const handleCardClick = (project) => {
     setSelected(project);
@@ -18,7 +21,7 @@ export default function Product() {
         className="fade-up"
         style={{
           height: "100%",
-          padding: "5rem 4rem 3rem",
+          padding: pad,
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
@@ -40,9 +43,24 @@ export default function Product() {
           </button>
         </div>
 
-        <div style={{ display: "flex", gap: "2rem", width: "100%", flex: 1, minHeight: 0, alignItems: "stretch" }}>
+        <div style={{
+          display: "flex",
+          flexDirection: isMobile ? "column" : "row",
+          gap: "1.5rem", width: "100%", flex: 1, minHeight: 0, alignItems: "stretch",
+          overflowY: isMobile ? "auto" : "hidden",
+        }}>
           {/* Left: project list */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: "0 0 260px", overflowY: "auto" }}>
+          <div style={{
+            display: "flex",
+            flexDirection: isMobile ? "row" : "column",
+            gap: "0.75rem",
+            flex: isMobile ? "none" : "0 0 260px",
+            overflowX: isMobile ? "auto" : "visible",
+            overflowY: isMobile ? "hidden" : "auto",
+            flexShrink: 0,
+          }}
+            className={isMobile ? "h-scroll" : ""}
+          >
             {productProjects.map((project) => (
               <div
                 key={project.id}
@@ -52,9 +70,11 @@ export default function Product() {
                   color: selected?.id === project.id ? "var(--cream)" : "var(--ink)",
                   border: "1px solid var(--soft)",
                   borderLeft: selected?.id === project.id ? "3px solid var(--accent)" : "3px solid transparent",
-                  padding: "1.5rem 2rem",
+                  padding: isMobile ? "1rem 1.25rem" : "1.5rem 2rem",
                   cursor: "pointer",
                   transition: "all 0.25s",
+                  flexShrink: isMobile ? 0 : undefined,
+                  minWidth: isMobile ? 160 : undefined,
                 }}
                 onMouseOver={(e) => {
                   if (selected?.id !== project.id) e.currentTarget.style.background = "var(--soft)";
@@ -260,16 +280,17 @@ export default function Product() {
       className="fade-up"
       style={{
         height: "100%",
-        padding: "5rem 4rem 3rem",
+        padding: pad,
+        overflowY: isMobile ? "auto" : "hidden",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: isMobile ? "flex-start" : "center",
       }}
     >
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)",
         gap: "1.5rem",
         width: "100%",
         maxWidth: 1100,

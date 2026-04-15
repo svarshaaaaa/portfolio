@@ -1,23 +1,27 @@
 "use client";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function Home({ scrollToSection }) {
+  const isMobile = useIsMobile();
+
   return (
     <section
       className="fade-up"
       style={{
         height: "100%",
-        padding: "5rem 4rem 3rem",
+        padding: isMobile ? "5rem 1.5rem 3rem" : "5rem 4rem 3rem",
         display: "flex",
-        flexDirection: "row",
-        alignItems: "flex-start",
-        gap: "4rem",
+        flexDirection: isMobile ? "column" : "row",
+        alignItems: isMobile ? "flex-start" : "flex-start",
+        justifyContent: isMobile ? "center" : "flex-start",
+        gap: isMobile ? "2rem" : "4rem",
       }}
     >
       {/* Text */}
       <div style={{ flex: 1 }}>
         <h1 style={{
           fontFamily: "'DM Serif Display', serif",
-          fontSize: "clamp(2.8rem, 5vw, 4.5rem)",
+          fontSize: isMobile ? "clamp(2.2rem, 8vw, 3.5rem)" : "clamp(2.8rem, 5vw, 4.5rem)",
           lineHeight: 1.15,
           marginBottom: "1.2rem",
         }}>
@@ -34,7 +38,7 @@ export default function Home({ scrollToSection }) {
           marginBottom: "2rem",
         }}>
           I love to create, build and tell stories.
-          <br />Come see what I’m building and learning!
+          <br />Come see what I'm building and learning!
         </p>
         <button
           onClick={() => scrollToSection("about")}
@@ -58,27 +62,28 @@ export default function Home({ scrollToSection }) {
         </button>
       </div>
 
-      {/* Photo */}
-      <div style={{
-        flex: "0 0 340px",
-        height: 420,
-        background: "var(--card-bg)",
-        border: "1px solid var(--soft)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        overflow: "hidden",
-      }}>
-        {/* Replace with: <Image src="/your-photo.jpg" alt="Varsha" width={340} height={420} style={{objectFit:"cover"}} /> */}
-        <span style={{
-          fontFamily: "'DM Serif Display', serif",
-          fontSize: "1rem",
-          color: "var(--warm-mid)",
-          fontStyle: "italic",
+      {/* Photo — hidden on mobile */}
+      {!isMobile && (
+        <div style={{
+          flex: "0 0 340px",
+          height: 420,
+          background: "var(--card-bg)",
+          border: "1px solid var(--soft)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
         }}>
-          your photo here
-        </span>
-      </div>
+          <span style={{
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: "1rem",
+            color: "var(--warm-mid)",
+            fontStyle: "italic",
+          }}>
+            your photo here
+          </span>
+        </div>
+      )}
     </section>
   );
 }
