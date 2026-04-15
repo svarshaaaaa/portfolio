@@ -22,12 +22,23 @@
   --card-bg: #242018;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--cream);
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
   transition: background 0.3s, color 0.3s;
+}
+
+.snap-section {
+  height: 100vh;
+  overflow: hidden;
+  scroll-snap-align: start;
 }
 
 @keyframes fadeUp {

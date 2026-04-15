@@ -1,6 +1,6 @@
 "use client";
 
-export default function Home({ setActivePage }) {
+export default function Home({ scrollToSection }) {
   return (
     <section
       className="fade-up"
@@ -37,7 +37,7 @@ export default function Home({ setActivePage }) {
           <br />Come see what I’m building and learning!
         </p>
         <button
-          onClick={() => setActivePage("about")}
+          onClick={() => scrollToSection("about")}
           style={{
             padding: "0.75rem 2rem",
             background: "var(--ink)",

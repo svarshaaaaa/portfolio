@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-export default function Navbar({ activePage, setActivePage }) {
+export default function Navbar({ activePage, scrollToSection }) {
   const [dark, setDark] = useState(true);
   const links = ["about", "tech", "product", "content", "contact"];
 
@@ -25,7 +25,7 @@ export default function Navbar({ activePage, setActivePage }) {
       }}
     >
       <button
-        onClick={() => setActivePage("home")}
+        onClick={() => scrollToSection("home")}
         style={{
           fontFamily: "'DM Serif Display', serif",
           fontSize: "1.4rem",
@@ -42,7 +42,7 @@ export default function Navbar({ activePage, setActivePage }) {
         {links.map((link) => (
           <li key={link}>
             <button
-              onClick={() => setActivePage(link)}
+              onClick={() => scrollToSection(link)}
               style={{
                 background: "none",
                 border: "none",
