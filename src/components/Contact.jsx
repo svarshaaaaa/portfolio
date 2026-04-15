@@ -32,7 +32,7 @@ export default function Contact() {
       <div style={{ display: "flex", gap: isMobile ? "1.5rem" : "2rem" }}>
         {/* LinkedIn */}
         <a
-          href="https://linkedin.com/in/yourhandle"
+          href="https://www.linkedin.com/in/varshasivaramakrishnan/"
           target="_blank" rel="noopener noreferrer"
           style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", textDecoration: "none", color: "var(--ink)" }}
           onMouseOver={(e) => (e.currentTarget.style.color = "var(--accent)")}
@@ -54,7 +54,7 @@ export default function Contact() {
 
         {/* Email */}
         <a
-          href="mailto:your@email.com"
+          href="mailto:svarshakrishnan@gmail.com"
           style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", textDecoration: "none", color: "var(--ink)" }}
           onMouseOver={(e) => (e.currentTarget.style.color = "var(--accent)")}
           onMouseOut={(e) => (e.currentTarget.style.color = "var(--ink)")}
