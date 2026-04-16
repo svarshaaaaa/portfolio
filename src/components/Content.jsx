@@ -9,7 +9,7 @@ export default function Content() {
       className="fade-up h-scroll"
       style={{
         height: "100%",
-        padding: isMobile ? "5rem 1.5rem 3rem" : "5rem 4rem 3rem",
+        padding: isMobile ? "3.5rem 1.5rem 3.5rem" : "3.5rem 4rem 3.5rem",
         overflowY: isMobile ? "auto" : "hidden",
         display: "flex",
         flexDirection: isMobile ? "column" : "row",
@@ -28,8 +28,9 @@ export default function Content() {
         </h2>
 
         <div style={{
-          width: isMobile ? "100%" : "65%",
+          width: isMobile ? "100%" : "55%",
           aspectRatio: "16/9",
+          maxHeight: "45vh",
           background: "var(--card-bg)",
           border: "1px solid var(--soft)",
           display: "flex",

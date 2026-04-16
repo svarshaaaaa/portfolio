@@ -10,7 +10,7 @@ export default function About() {
       className="fade-up h-scroll"
       style={{
         height: "100%",
-        padding: isMobile ? "5rem 1.5rem 3rem" : "5rem 4rem 3rem",
+        padding: isMobile ? "3.5rem 1.5rem 3.5rem" : "3.5rem 4rem 3.5rem",
         overflowY: "auto",
         display: "flex",
         flexDirection: "column",
@@ -137,7 +137,7 @@ export default function About() {
                   </div>
                   <div style={{
                     position: "absolute",
-                    left: "calc(50% - 7px)", top: "3.6rem",
+                    left: "calc(50% - 7px)", top: "4.5rem",
                     width: 14, height: 14,
                     borderRadius: "50%",
                     background: "var(--accent)",

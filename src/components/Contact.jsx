@@ -9,7 +9,7 @@ export default function Contact() {
       className="fade-up"
       style={{
         height: "100%",
-        padding: isMobile ? "5rem 1.5rem 3rem" : "5rem 4rem 3rem",
+        padding: isMobile ? "3.5rem 1.5rem 3.5rem" : "3.5rem 4rem 3.5rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",

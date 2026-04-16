@@ -10,7 +10,7 @@ export default function Tech() {
   const trackRef = useRef(null);
   const isMobile = useIsMobile();
 
-  const pad = isMobile ? "5rem 1.5rem 3rem" : "5rem 4rem 3rem";
+  const pad = isMobile ? "3.5rem 1.5rem 3.5rem" : "3.5rem 4rem 3.5rem";
 
   const handleProjectClick = (project) => {
     setSelected(project);
