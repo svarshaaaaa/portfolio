@@ -111,6 +111,27 @@ export default function Navbar({ activePage, scrollToSection }) {
                 {link}
               </button>
             ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              style={{
+                display: "block", width: "100%",
+                padding: "1rem 1.5rem",
+                background: "transparent",
+                borderBottom: "1px solid var(--soft)",
+                textAlign: "left",
+                fontSize: "0.85rem", fontWeight: 600,
+                letterSpacing: "0.1em", textTransform: "uppercase",
+                color: "var(--accent)",
+                textDecoration: "none",
+                fontFamily: "'DM Sans', sans-serif",
+                boxSizing: "border-box",
+              }}
+            >
+              Resume ↗
+            </a>
           </div>
         )}
       </>
@@ -165,6 +186,29 @@ export default function Navbar({ activePage, scrollToSection }) {
           </li>
         ))}
       </ul>
+
+      <a
+        href="/resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "flex", alignItems: "center",
+          padding: "0 1.5rem",
+          flexShrink: 0,
+          borderLeft: "1px solid var(--soft)",
+          borderRight: "1px solid var(--soft)",
+          fontSize: "0.8rem", fontWeight: 600,
+          letterSpacing: "0.1em", textTransform: "uppercase",
+          color: "var(--accent)",
+          textDecoration: "none",
+          transition: "background 0.2s, color 0.2s",
+          whiteSpace: "nowrap",
+        }}
+        onMouseOver={(e) => { e.currentTarget.style.background = "var(--accent)"; e.currentTarget.style.color = "var(--cream)"; }}
+        onMouseOut={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--accent)"; }}
+      >
+        Resume ↗
+      </a>
 
       <div style={{ display: "flex", alignItems: "center", padding: "0 1.5rem", flexShrink: 0 }}>
         <DarkToggle />
