@@ -30,9 +30,7 @@ export default function About() {
 
       <div style={{
         position: "relative",
-        maxWidth: isMobile ? "100%" : 900,
         width: "100%",
-        margin: "0 auto",
         flex: 1,
       }}>
 
@@ -107,21 +105,21 @@ export default function About() {
                   marginBottom: i === timeline.length - 1 ? "2rem" : "4rem",
                 }}>
                   <div style={{
-                    width: "44%",
+                    width: "46%",
                     textAlign: isLeft ? "right" : "left",
                     paddingRight: isLeft ? "2.5rem" : 0,
                     paddingLeft: isLeft ? 0 : "2.5rem",
                   }}>
                     <div style={{
                       fontFamily: "'DM Serif Display', serif",
-                      fontSize: "5rem", lineHeight: 1,
-                      color: "var(--soft)",
-                      marginBottom: "-1.2rem",
+                      fontSize: "2.2rem", lineHeight: 1,
+                      color: "var(--warm-mid)",
+                      marginBottom: "-0.5rem",
                       userSelect: "none",
                     }}>{item.year}</div>
                     <div style={{
                       fontFamily: "'DM Serif Display', serif",
-                      fontSize: "1.25rem", color: "var(--ink)",
+                      fontSize: "1.4rem", color: "var(--ink)",
                       marginBottom: "0.5rem",
                       position: "relative", zIndex: 1,
                     }}>{item.title}</div>
@@ -131,13 +129,13 @@ export default function About() {
                       marginLeft: isLeft ? "auto" : 0,
                       marginBottom: "0.65rem",
                     }} />
-                    <p style={{ fontSize: "0.88rem", color: "var(--warm-mid)", lineHeight: 1.75, margin: 0 }}>
+                    <p style={{ fontSize: "1rem", color: "var(--warm-mid)", lineHeight: 1.75, margin: 0 }}>
                       {item.description}
                     </p>
                   </div>
                   <div style={{
                     position: "absolute",
-                    left: "calc(50% - 7px)", top: "4.5rem",
+                    left: "calc(50% - 7px)", top: "2rem",
                     width: 14, height: 14,
                     borderRadius: "50%",
                     background: "var(--accent)",
