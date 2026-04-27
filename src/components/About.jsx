@@ -12,8 +12,7 @@ export default function About() {
         height: "100%",
         padding: isMobile ? "3.5rem 1.5rem 3.5rem" : "3.5rem 4rem 3.5rem",
         overflowY: "auto",
-        display: "flex",
-        flexDirection: "column",
+        boxSizing: "border-box",
       }}
     >
       <p style={{
@@ -22,7 +21,7 @@ export default function About() {
         textTransform: "uppercase",
         color: "var(--warm-mid)",
         fontWeight: 600,
-        marginBottom: "3rem",
+        marginBottom: "1.5rem",
         textAlign: "center",
       }}>
         A little about myself
@@ -31,7 +30,6 @@ export default function About() {
       <div style={{
         position: "relative",
         width: "100%",
-        flex: 1,
       }}>
 
         {isMobile ? (
@@ -102,13 +100,14 @@ export default function About() {
                   display: "flex",
                   justifyContent: isLeft ? "flex-start" : "flex-end",
                   position: "relative",
-                  marginBottom: i === timeline.length - 1 ? "2rem" : "4rem",
+                  marginBottom: i === timeline.length - 1 ? "1.5rem" : "2rem",
                 }}>
                   <div style={{
                     width: "46%",
                     textAlign: isLeft ? "right" : "left",
-                    paddingRight: isLeft ? "2.5rem" : 0,
-                    paddingLeft: isLeft ? 0 : "2.5rem",
+                    paddingRight: isLeft ? "2.5rem" : "1rem",
+                    paddingLeft: isLeft ? "1rem" : "2.5rem",
+                    boxSizing: "border-box",
                   }}>
                     <div style={{
                       fontFamily: "'DM Serif Display', serif",

@@ -76,7 +76,7 @@ export const timeline = [
     year: "2026",
     title: "Started Master's Degree",
     description: "Currently pursuing MSc Management of Technology at TU Delft.",
-  },
+  }
   
 ];
 
