@@ -1,102 +1,174 @@
 "use client";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
+function ProfileRow({ name, handle, url, label }) {
+  return (
+    <div style={{
+      display: "flex", alignItems: "center", gap: "0.85rem",
+      paddingTop: "1rem", borderTop: "1px solid var(--soft)",
+      flexShrink: 0,
+    }}>
+      <div style={{
+        width: 38, height: 38, borderRadius: "50%",
+        background: "var(--soft)", border: "1px solid var(--soft)",
+        flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+        overflow: "hidden",
+      }}>
+        <span style={{ fontSize: "0.6rem", color: "var(--warm-mid)", fontStyle: "italic" }}>photo</span>
+      </div>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "0.95rem", color: "var(--ink)" }}>{name}</div>
+        <div style={{ fontSize: "0.72rem", color: "var(--warm-mid)" }}>{handle}</div>
+      </div>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          padding: "0.4rem 0.9rem",
+          background: "var(--accent)", color: "white",
+          textDecoration: "none", fontSize: "0.68rem",
+          fontWeight: 600, letterSpacing: "0.06em",
+          textTransform: "uppercase", flexShrink: 0,
+          transition: "opacity 0.2s",
+          whiteSpace: "nowrap",
+        }}
+        onMouseOver={(e) => (e.currentTarget.style.opacity = "0.8")}
+        onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
+      >
+        {label}
+      </a>
+    </div>
+  );
+}
+
 export default function Content() {
   const isMobile = useIsMobile();
 
   return (
     <section
-      className="fade-up h-scroll"
+      className="fade-up"
       style={{
         height: "100%",
         padding: isMobile ? "3.5rem 1.5rem 3.5rem" : "3.5rem 4rem 3.5rem",
         overflowY: isMobile ? "auto" : "hidden",
         display: "flex",
-        flexDirection: isMobile ? "column" : "row",
-        alignItems: isMobile ? "flex-start" : "center",
-        gap: isMobile ? "2rem" : "4rem",
+        flexDirection: "column",
       }}
     >
-      {/* Video side */}
-      <div style={{ flex: 1, width: "100%" }}>
-        <h2 style={{
-          fontFamily: "'DM Serif Display', serif",
-          fontSize: isMobile ? "2rem" : "2.8rem",
-          marginBottom: "1.5rem",
-        }}>
-          What I make.
-        </h2>
+      <h2 style={{
+        fontFamily: "'DM Serif Display', serif",
+        fontSize: isMobile ? "2rem" : "2.8rem",
+        marginBottom: "1.5rem",
+        flexShrink: 0,
+      }}>
+        What I make.
+      </h2>
 
+      <div style={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        gap: "1.5rem",
+        flex: 1,
+        minHeight: 0,
+      }}>
+
+        {/* ── YouTube Card ── */}
         <div style={{
-          width: isMobile ? "100%" : "55%",
-          aspectRatio: "16/9",
-          maxHeight: "45vh",
+          flex: 1,
           background: "var(--card-bg)",
           border: "1px solid var(--soft)",
+          padding: "1.25rem",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
+          flexDirection: "column",
+          minHeight: isMobile ? 300 : 0,
         }}>
-          <iframe
-            width="100%" height="100%"
-            src="https://www.youtube.com/embed/3mgkK0E1uy4"
-            allowFullScreen
-            style={{ border: "none" }}
+          <div style={{
+            fontSize: "0.68rem", letterSpacing: "0.15em",
+            textTransform: "uppercase", color: "var(--warm-mid)",
+            fontWeight: 600, marginBottom: "0.85rem", flexShrink: 0,
+          }}>
+            YouTube
+          </div>
+
+          {/* Video — fills remaining card height */}
+          <div style={{ flex: 1, minHeight: 0, overflow: "hidden", marginBottom: "1rem" }}>
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/3mgkK0E1uy4"
+              allowFullScreen
+              style={{ border: "none", display: "block" }}
+            />
+          </div>
+
+          <ProfileRow
+            name="Varsha"
+            handle="@svarshaaa"
+            url="https://www.youtube.com/@svarshaaa"
+            label="Visit Channel"
           />
         </div>
-      </div>
 
-      {/* YouTube profile side */}
-      <div style={{
-        flex: isMobile ? "none" : "0 0 200px",
-        width: isMobile ? "100%" : "auto",
-        display: "flex",
-        flexDirection: isMobile ? "row" : "column",
-        alignItems: "center",
-        gap: "1rem",
-        paddingTop: isMobile ? 0 : "2rem",
-      }}>
-        {/* Avatar */}
+        {/* ── Instagram Card ── */}
         <div style={{
-          width: isMobile ? 70 : 120,
-          height: isMobile ? 70 : 120,
-          borderRadius: "50%",
+          flex: 1,
           background: "var(--card-bg)",
           border: "1px solid var(--soft)",
-          overflow: "hidden",
-          flexShrink: 0,
-          display: "flex", alignItems: "center", justifyContent: "center",
+          padding: "1.25rem",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: isMobile ? 300 : 0,
         }}>
-          <span style={{ fontSize: "0.75rem", color: "var(--warm-mid)", fontStyle: "italic" }}>photo</span>
-        </div>
+          <div style={{
+            fontSize: "0.68rem", letterSpacing: "0.15em",
+            textTransform: "uppercase", color: "var(--warm-mid)",
+            fontWeight: 600, marginBottom: "0.85rem", flexShrink: 0,
+          }}>
+            Instagram
+          </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem", alignItems: isMobile ? "flex-start" : "center" }}>
-          <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: "1.1rem" }}>Varsha</div>
-          <div style={{ fontSize: "0.8rem", color: "var(--warm-mid)" }}>@svarshaaa</div>
+          {/* IG preview — gradient placeholder, whole area is clickable */}
           <a
-            href="https://www.youtube.com/@svarshaaa"
+            href="https://www.instagram.com/svarshaaa"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: "inline-block",
-              padding: "0.5rem 1.2rem",
-              background: "var(--accent)",
-              color: "white",
+              flex: 1, minHeight: 0,
+              display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center",
+              gap: "0.6rem",
+              background: "linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
               textDecoration: "none",
-              fontSize: "0.75rem",
-              fontWeight: 600,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
+              marginBottom: "1rem",
               transition: "opacity 0.2s",
-              marginTop: "0.25rem",
             }}
-            onMouseOver={(e) => (e.currentTarget.style.opacity = "0.85")}
+            onMouseOver={(e) => (e.currentTarget.style.opacity = "0.88")}
             onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
           >
-            Visit Channel
+            {/* Instagram camera icon — SVG so no emoji rendering issues */}
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/>
+            </svg>
+            <span style={{
+              fontSize: "0.72rem", fontWeight: 600,
+              letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "white", opacity: 0.9,
+            }}>
+              View profile ↗
+            </span>
           </a>
+
+          <ProfileRow
+            name="Varsha"
+            handle="@svarshaaa"
+            url="https://www.instagram.com/svarshaaa"
+            label="Visit Profile"
+          />
         </div>
+
       </div>
     </section>
   );
