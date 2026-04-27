@@ -55,28 +55,29 @@ export const timeline = [
   {
     year: "2020",
     title: "Completed High School",
-    description: "Graduated from P.S.B.B. Senior Secondary School, Chennai with 95.6% in my board examinations.",
-  },
-  {
-    year: "2024",
-    title: "Title / Role",
-    description: "Short description of what you did, built, or achieved here.",
+    description: "Graduated from P.S.B.B. Senior Secondary School, Chennai with 95.6% in my board examinations with a focus on Physics, Chemistry, Mathematics, and Economics.",
   },
   {
     year: "2023",
-    title: "Title / Role",
-    description: "Short description of what you did, built, or achieved here.",
+    title: "Summer Internship at Citicorp Services India Private Limited",
+    description: "Started my internship journey with a summer internship at Citicorp Services India Private Limited, where I worked on a file management tool using ReactJS, Springboot, JDBC, and MySQL.",
   },
   {
-    year: "2022",
-    title: "Title / Role",
-    description: "Short description of what you did, built, or achieved here.",
+    year: "2024",
+    title: "Completed my Bachelor's Degree",
+    description: "Graduated from SSN College of Engineering with a Bachelors in Engineering in Computer Science with a CGPA of 8.236/10. During my time at SSN, I participated in several hackathons including the Smart India Hackathon 2023. I was also actively involved in the National Service Scheme (NSS) and contributed to various editorial teams.",
   },
   {
-    year: "2021",
-    title: "Title / Role",
-    description: "Short description of what you did, built, or achieved here.",
+    year: "2024",
+    title: "Started my Career",
+    description: "Began my professional journey as a Software Engineer at Citicorp Services India Private Limited. I have worked across teams focused on payment processing and fraud detection systems, gaining experience in technologies like Springboot, AWS, PySpark.",
   },
+  {
+    year: "2026",
+    title: "Started Master's Degree",
+    description: "Currently pursuing MSc Management of Technology at TU Delft.",
+  },
+  
 ];
 
 export const techCourses = [
