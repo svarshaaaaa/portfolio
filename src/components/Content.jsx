@@ -130,7 +130,7 @@ export default function Content() {
 
           {/* IG preview — gradient placeholder, whole area is clickable */}
           <a
-            href="https://www.instagram.com/svarshaaa"
+            href="https://www.instagram.com/varsh.yaps"
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -163,8 +163,8 @@ export default function Content() {
 
           <ProfileRow
             name="Varsha"
-            handle="@svarshaaa"
-            url="https://www.instagram.com/svarshaaa"
+            handle="@varsh.yaps"
+            url="https://www.instagram.com/varsh.yaps"
             label="Visit Profile"
           />
         </div>
