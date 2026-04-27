@@ -53,9 +53,9 @@ export const productProjects = [
 
 export const timeline = [
   {
-    year: "2025",
-    title: "Title / Role",
-    description: "Short description of what you did, built, or achieved here.",
+    year: "2020",
+    title: "Completed High School",
+    description: "Graduated from P.S.B.B. Senior Secondary School, Chennai with 95.6% in my board examinations.",
   },
   {
     year: "2024",
