@@ -1,23 +1,14 @@
 export const techProjects = [
   {
-    title: "Project One",
-    desc: "Short description of what you built and the tech stack used.",
-    link: "#",
-  },
-  {
-    title: "Project Two",
-    desc: "Short description of what you built and the tech stack used.",
-    link: "#",
-  },
-  {
-    title: "Project Three",
-    desc: "Short description of what you built and the tech stack used.",
-    link: "#",
-  },
-  {
-    title: "Project Four",
-    desc: "Short description of what you built and the tech stack used.",
-    link: "#",
+    id: 1,
+    title: "VR Interview Anxiety Trainer",
+    details: {
+      problem: "Many students feel anxious about job interviews, especially if they're not confident speaking English, and this can hurt their performance when it matters most. VR exposure therapy offers a solution: it lets students practice realistic interview scenarios in a safe, private space where mistakes have no real-world consequences. By practicing repeatedly and getting feedback on things like confidence, body language, and English fluency, students can build real skill and walk into actual interviews feeling more prepared.",
+      approach: "I built the interview simulation in Unity, where users step into a virtual interview room and talk to a ChatGPT-powered interviewer built using Inworld. Users record their answers, and I used the Whisper speech-to-text model together with the HuggingFace API to transcribe what they said. My C# scripts then analyzed the transcript to calculate filler word usage, speaking rate, and volume, and showed this feedback back to the user on screen. I was primarily ivolved in the technical implementation, but I also contributed to the ideation of the interview scenarios.",
+      outcome: "The result was a working VR exposure therapy tool that combines conversational AI with objective speech analytics to help students practice and improve their interview performance. The thesis was worth 9 credits and received an A grade (GPA 8).",
+      videoUrl: "https://drive.google.com/file/d/1MaYHQl8kUd1MJSvKJ-BL0iH5sNCMHQ6m/view?usp=sharing",
+      tools: ["Unity", "C#", "Whisper model", "HuggingFace API"],
+    },
   },
 ];
 
