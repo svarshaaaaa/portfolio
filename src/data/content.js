@@ -21,7 +21,9 @@ export const productProjects = [
       problem: "As part of ISB Neovate 2026, a case competition hosted by the Indian School of Business, my team (Code Pink) was tasked with solving a real business challenge for Yatrafy, a travel app. Yatrafy's users faced a fragmented travel planning experience — juggling multiple platforms to research, book, and manage trips. Our challenge was to design a generative AI-powered travel assistant that could turn a vague idea into a fully booked, personalized itinerary — all within one conversational interface.",
       approach: "The idea was simple — see what's already out there, identify the gaps, and bridge them. We mapped the competitive landscape across players like MakeMyTrip, Booking.com, and Google Travel, and discovered that no single platform was offering a truly end-to-end travel planning experience. We combined the shortcomings across all existing services and built our product strategy around addressing them. For a full breakdown, refer to the submission documents below.",
       pdfUrl: "/docs/round-1-submission.pdf",
+      pdfLabel: "Round 1 Submission",
       pdfUrl2: "/docs/round-2-submission.pdf",
+      pdfLabel2: "Round 2 Submission",
       outcome: "While we didn't proceed to the finale, but I still wanted to see the vision come to life, so I built it using Claude's help. Click the link below to see  it!",
       siteUrl: "https://yatrafy.vercel.app/",
       tools: ["Claude", "Vercel"],
@@ -36,10 +38,25 @@ export const productProjects = [
       approach: "My approach was to treat 'what’s for dinner' as a data fragmentation problem. I listed out every friction point—from lost Instagram DMs to voice notes from my mum—and prioritized features that solved those specific gaps first.",
       outcome: "The beauty of building today is that the barrier between an idea and a prototype has basically vanished. I spent my time focusing on the product vision—mapping out the user journey and the features that actually matter—and then used Claude Code as my 'co-pilot' to bring the technical side to life.",
       videoUrl: "/docs/Crumb Demo.mp4",
+      videoLabel: "Crumb Demo",
       tools: ["React Native", "Expo", "AsyncStorage", "Anthropic Claude API"],
     },
   },
-  
+  {
+    id: 3,
+    title: "E-Vakheel",
+    tag: "Product Design",
+    details: {
+      problem: "The lack of access to legal counsel and proper legal assistance for individuals awaiting trial provides a major hindrance in the Indian judicial system. As part of the Smart India Hackathon 2023, my team (Code Pink) was tasked with creating tech-driven solutions for under-trial prisoners in India.",
+      approach: "Our solution is a comprehensive mobile application E-Vakheel, with multiple features to help digitalize the judicial process and increase its efficiency, with main focus on under-trial prisoners. The application contains two instances: E-Vakheel - for under-trial prisoners, support persons and advocates; and E-Vakheel Admin - for judges, under-trial review committee (UTRC), jail authorities",
+      outcome: "Our teammate created a working prototype of the application using Figma",
+      pdfUrl: "/docs/official-submission.pptx",
+      pdfLabel: "Official Submission",
+      pdfUrl2: "/docs/product-documentation.pdf",
+      pdfLabel2: "Product Documentation",
+      tools: ["Figma"],
+    },
+  },
 ];
 
 export const timeline = [

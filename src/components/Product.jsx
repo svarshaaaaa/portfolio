@@ -165,7 +165,7 @@ export default function Product() {
                         onMouseOver={(e) => e.currentTarget.style.borderColor = "var(--accent)"}
                         onMouseOut={(e) => e.currentTarget.style.borderColor = "var(--soft)"}
                       >
-                        Round 1 Submission ↗
+                         {selected.details.pdfLabel || "View Document"} ↗
                       </a>
                     )}
                     {selected.details.pdfUrl2 && (
@@ -183,7 +183,7 @@ export default function Product() {
                         onMouseOver={(e) => e.currentTarget.style.borderColor = "var(--accent)"}
                         onMouseOut={(e) => e.currentTarget.style.borderColor = "var(--soft)"}
                       >
-                        Round 2 Submission ↗
+                         {selected.details.pdfLabel2 || "View Document"} ↗
                       </a>
                     )}
                   </div>
