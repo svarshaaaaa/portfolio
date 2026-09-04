@@ -112,7 +112,7 @@ export default function Navbar({ activePage, scrollToSection }) {
               </button>
             ))}
             <a
-              href="/resume.pdf"
+              href="/docs/Varsha-Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
@@ -188,7 +188,7 @@ export default function Navbar({ activePage, scrollToSection }) {
       </ul>
 
       <a
-        href="/resume.pdf"
+        href="/docs/Varsha-Resume.pdf"
         target="_blank"
         rel="noopener noreferrer"
         style={{
